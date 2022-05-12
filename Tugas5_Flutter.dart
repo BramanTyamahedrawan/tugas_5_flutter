@@ -38,6 +38,34 @@ class HomePage extends StatelessWidget {
           children: [ColoumnGambar3x(), ColoumnGambar4x()],
         ),
         Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+        PilihGambar()
+      ]),
+    );
+  }
+}
+
+class PilihGambar extends StatefulWidget {
+  @override
+  _PilihGambarState createState() => _PilihGambarState();
+}
+
+class _PilihGambarState extends State<PilihGambar> {
+  @override
+  int number = 0;
+
+  void tekantombol() {
+    setState(() {
+      number = number + 1;
+      if (number > 4) {
+        number = 0;
+      }
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
         Card(
           color: Colors.white,
           child: Column(
@@ -68,45 +96,17 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Padding(padding: EdgeInsets.all(10)),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.grey[200]),
+                onPressed: () {
+                  tekantombol();
+                },
+                child: Text(
+                  'Pilih Gambar',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
             ],
-          ),
-        ),
-        PilihGambar()
-      ]),
-    );
-  }
-}
-
-class PilihGambar extends StatefulWidget {
-  @override
-  _PilihGambarState createState() => _PilihGambarState();
-}
-
-class _PilihGambarState extends State<PilihGambar> {
-  @override
-  int number = 0;
-
-  void tekantombol() {
-    setState(() {
-      number = number + 1;
-      if (number > 4) {
-        number = 0;
-      }
-    });
-  }
-
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.grey[200]),
-          onPressed: () {
-            tekantombol();
-          },
-          child: Text(
-            'Pilih Gambar',
-            style: TextStyle(color: Colors.black),
           ),
         ),
         Padding(padding: EdgeInsets.all(20)),
